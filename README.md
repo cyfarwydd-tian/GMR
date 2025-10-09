@@ -4,6 +4,10 @@
   <a href="https://arxiv.org/abs/2505.02833">
     <img src="https://img.shields.io/badge/paper-arXiv%3A2505.02833-b31b1b.svg" alt="arXiv Paper"/>
   </a>
+   <a href="https://arxiv.org/abs/2510.02252">
+    <img src="https://img.shields.io/badge/paper-arXiv%3A2510.02252-b31b1b.svg" alt="arXiv Paper"/>
+  </a>
+
   <a href="https://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"/>
   </a>
@@ -16,9 +20,14 @@
   <a href="https://yanjieze.github.io/humanoid-foundation/#GMR">
     <img src="https://img.shields.io/badge/blog-GMR-blue.svg" alt="Blog"/>
   </a>
+    <a href="https://www.bilibili.com/video/BV1p1nazeEzC/?share_source=copy_web&vd_source=c76e3ab14ac3f7219a9006b96b4b0f76">
+    <img src="https://img.shields.io/badge/tutorial-BILIBILI-blue.svg" alt="Blog"/>
+  </a>
 
 
 ![Banner for GMR](./assets/GMR.png)
+
+![GMR](./assets/GMR_pipeline.png)
 
 Key features of GMR:
 - Real-time high-quality retargeting, unlock the potential of real-time whole-body teleoperation, i.e., [TWIST](https://github.com/YanjieZe/TWIST).
@@ -29,7 +38,23 @@ Key features of GMR:
 
 This repo is licensed under the [MIT License](LICENSE).
 
+Starting from its release, GMR is massively used by the community. See below for cool papers that use GMR:
+- [arXiv 2025.08](https://arxiv.org/abs/2508.21043), *HITTER: A HumanoId Table TEnnis Robot via Hierarchical Planning and Learning*
+- [arXiv 2025.08](https://arxiv.org/abs/2508.13444), *Switch4EAI: Leveraging Console Game Platform for Benchmarking Robotic Athletics*
+- [arXiv 2025.05](https://arxiv.org/abs/2505.02833), *TWIST: Teleoperated Whole-Body Imitation System*
+
+ # To Do List
+ - [ ] add doc on ik config offset
+ - [ ] support xsens data
+
+
 # News & Updates
+- 2025-10-02: Tech report for GMR is now on [arXiv](https://arxiv.org/abs/2510.02252).
+- 2025-10-01: GMR now supports converting GMR pickle files to CSV (for beyondmimic), check `scripts/batch_gmr_pkl_to_csv.py`.
+- 2025-09-25: An introduction on GMR is available on [Bilibili](https://www.bilibili.com/video/BV1p1nazeEzC/?share_source=copy_web&vd_source=c76e3ab14ac3f7219a9006b96b4b0f76).
+- 2025-09-16: GMR now supports to use [GVHMR](https://github.com/zju3dv/GVHMR) for extracting human pose from **monocular video** and retargeting to robot.
+- 2025-09-12: GMR now supports [Tienkung](https://github.com/Open-X-Humanoid/TienKung-Lab), the 14th humanoid robot in the repo.
+- 2025-08-30: GMR now supports [Unitree H1 2](https://www.unitree.com/cn/h1) and [PND Adam Lite](https://pndbotics.com/), the 12th and 13th humanoid robots in the repo.
 - 2025-08-28: GMR now supports [Booster T1](https://www.boosterobotics.com/) for both 23dof and 29dof.
 - 2025-08-28: GMR now supports using exported offline FBX motion data from [OptiTrack](https://www.optitrack.com/). 
 - 2025-08-27: GMR now supports [Berkeley Humanoid Lite](https://github.com/HybridRobotics/Berkeley-Humanoid-Lite-Assets), the 11th humanoid robot in the repo.
@@ -92,6 +117,27 @@ https://github.com/user-attachments/assets/2c75a146-e28f-4327-930f-5281bfc2ca9c
 https://github.com/user-attachments/assets/ff10c7ef-4357-4789-9219-23c6db8dba6d
 
 
+Demo 8: Unitree H1 2 doing some jumping
+
+
+https://github.com/user-attachments/assets/2382d8ce-7902-432f-ab45-348a11eeb312
+
+
+Demo 9: PND Adam lite
+
+
+https://github.com/user-attachments/assets/a8ef1409-88f1-4393-9cd0-d2b14216d2a4
+
+Demo 10: Tienkung Walking
+
+
+https://github.com/user-attachments/assets/7a775ecc-4254-450c-a3eb-49e843b8e331
+
+
+Demo 11: extract human pose from monocular video with GVHMR and retarget with GMR
+
+[Watch on Bilibili »](https://www.bilibili.com/video/BV1Tnpmz9EaE)
+
 # Supported Robots and Data Formats
 
 | Assigned ID | Robot/Data Format | Robot DoF | SMPLX ([AMASS](https://amass.is.tue.mpg.de/), [OMOMO](https://github.com/lijiaman/omomo_release)) | BVH ( [LAFAN1](https://github.com/ubisoft/ubisoft-laforge-animation-dataset)) | FBX ([OptiTrack](https://www.optitrack.com/)) | More formats coming soon | 
@@ -99,20 +145,22 @@ https://github.com/user-attachments/assets/ff10c7ef-4357-4789-9219-23c6db8dba6d
 | 0 | Unitree G1 `unitree_g1` | Leg (2\*6) + Waist (3) + Arm (2\*7) = 29 | ✅ | ✅ | ✅ |
 | 1 | Unitree G1 with Hands `unitree_g1_with_hands` | Leg (2\*6) + Waist (3) + Arm (2\*7) + Hand (2\*7) = 43 | ✅ | ✅ | ✅ |
 | 2 | Unitree H1 `unitree_h1` | Leg (2\*5) + Waist (1) + Arm (2\*4) = 19 | ✅ | TBD | TBD |
-| 3 | Booster T1 `booster_t1` | TBD | ✅ |  TBD  | TBD |
-| 4 | Booster T1 29dof `booster_t1_29dof` | TBD | ✅ |  ✅  | TBD | 
-| 5 | Booster K1 `booster_k1` | Neck (2) + Arm (2\*4) + Leg (2\*6) = 22 | ✅ | TBD | TBD |
-| 6 | Stanford ToddlerBot `stanford_toddy` | TBD | ✅ | ✅ | TBD |
-| 7 | Fourier N1 `fourier_n1` | TBD | ✅ | ✅ | TBD |
-| 8 | ENGINEAI PM01 `engineai_pm01` | TBD | ✅ | ✅ | TBD |
-| 9 | HighTorque Hi `hightorque_hi` | Head (2) + Arm (2\*5) + Waist (1) + Leg (2\*6) = 25 | ✅ | TBD | TBD |
-| 10 | Galaxea R1 Pro `galaxea_r1pro` (this is a wheeled robot!) |  Base (6) + Torso (4) + Arm (2*7) = 24 | ✅ | TBD | TBD |
-| 11 | Kuavo `kuavo_s45` |  Head (2) + Arm (2\*7) + Leg (2\*6) = 28 | ✅ | TBD | TBD |
-| 12 | Berkeley Humanoid Lite `berkeley_humanoid_lite` (need further tuning) | Leg (2\*6) + Arm (2\*5) = 22 | ✅ | TBD | TBD |
+| 3 | Unitree H1 2 `unitree_h1_2` | Leg (2\*6) + Waist (1) + Arm (2\*7) = 27 | ✅ | TBD | TBD |
+| 4 | Booster T1 `booster_t1` | TBD | ✅ |  TBD  | TBD |
+| 5 | Booster T1 29dof `booster_t1_29dof` | TBD | ✅ |  ✅  | TBD | 
+| 6 | Booster K1 `booster_k1` | Neck (2) + Arm (2\*4) + Leg (2\*6) = 22 | ✅ | TBD | TBD |
+| 7 | Stanford ToddlerBot `stanford_toddy` | TBD | ✅ | ✅ | TBD |
+| 8 | Fourier N1 `fourier_n1` | TBD | ✅ | ✅ | TBD |
+| 9 | ENGINEAI PM01 `engineai_pm01` | TBD | ✅ | ✅ | TBD |
+| 10 | HighTorque Hi `hightorque_hi` | Head (2) + Arm (2\*5) + Waist (1) + Leg (2\*6) = 25 | ✅ | TBD | TBD |
+| 11 | Galaxea R1 Pro `galaxea_r1pro` (this is a wheeled robot!) |  Base (6) + Torso (4) + Arm (2*7) = 24 | ✅ | TBD | TBD |
+| 12 | Kuavo `kuavo_s45` |  Head (2) + Arm (2\*7) + Leg (2\*6) = 28 | ✅ | TBD | TBD |
+| 13 | Berkeley Humanoid Lite `berkeley_humanoid_lite` (need further tuning) | Leg (2\*6) + Arm (2\*5) = 22 | ✅ | TBD | TBD |
+| 14 | PND Adam Lite `pnd_adam_lite`  | Leg (2\*6) + Waist (3) + Arm (2\*5) = 25 | ✅ | TBD | TBD |
+| 15 | Tienkung `tienkung`  | Leg (2\*6) + Arm (2\*4) = 20 | ✅ | TBD | TBD |
 | More robots coming soon ! |
-| 13 | AgiBot A2 `agibot_a2` | TBD | TBD | TBD | TBD |
-| 14 | OpenLoong `openloong` | TBD | TBD | TBD | TBD |
-| 15 | PND Adam Lite `pnd_adam_lite` (have bugs in mujoco file loading) | Leg (2\*6) + Waist (3) + Arm (2\*5) = 25 | TBD | TBD | TBD |
+| 16 | AgiBot A2 `agibot_a2` | TBD | TBD | TBD | TBD |
+| 17 | OpenLoong `openloong` | TBD | TBD | TBD | TBD |
 
 
 
@@ -191,6 +239,25 @@ python scripts/smplx_to_robot_dataset.py --src_folder <path_to_dir_of_smplx_data
 By default there is no visualization for batch retargeting.
 
 
+## Retargeting from GVHMR to Robot
+
+First, install GVHMR by following [their official instructions](https://github.com/zju3dv/GVHMR/blob/main/docs/INSTALL.md).
+
+And run their demo that can extract human pose from monocular video:
+
+```bash
+# in GVHMR repo
+python tools/demo/demo.py --video=docs/example_video/tennis.mp4 -s
+```
+Then you should obtain the saved human pose data in `GVHMR/outputs/demo/tennis/hmr4d_results.pt`.
+
+Then, run the command below to retarget the extracted human pose data to your robot:
+```bash
+python scripts/gvhmr_to_robot.py --gvhmr_pred_file <path_to_hmr4d_results.pt> --robot unitree_g1 --record_video
+```
+
+
+
 ## Retargeting from BVH (LAFAN1) to Robot
 
 Retarget a single motion:
@@ -264,9 +331,16 @@ If you want to record video, add `--record_video` and `--video_path <your_video_
 
 # Citation
 
-If you find our code useful, please consider citing our papers:
+If you find our code useful, please consider citing our related papers:
 
 ```bibtex
+@article{joao2025gmr,
+title={Retargeting Matters: General Motion Retargeting for Humanoid Motion Tracking},
+author= {Joao Pedro Araujo and Yanjie Ze and Pei Xu and Jiajun Wu and C. Karen Liu},
+year= {2025},
+journal= {arXiv preprint arXiv:2510.02252}
+}
+
 @article{ze2025twist,
 title={TWIST: Teleoperated Whole-Body Imitation System},
 author= {Yanjie Ze and Zixuan Chen and João Pedro Araújo and Zi-ang Cao and Xue Bin Peng and Jiajun Wu and C. Karen Liu},
