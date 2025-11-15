@@ -1,2 +1,15 @@
 # single motion
 python scripts/smplx_to_robot.py --smplx_file <path_to_smplx_data> --robot <path_to_robot_data> --save_path <path_to_save_robot_data.pkl> --rate_limit
+
+
+python scripts/batch_gmr_pkl_to_csv.py  --folder "./motion_output_gvhmr"
+
+
+
+
+scp -p ./motion_output_gvhmr/csv/Reference_human_4.csv fangzheng@192.168.238.176:/data/fangzheng/whole_body_tracking/data/
+
+
+python scripts/bvh_to_robot_dataset.py --src_folder  --tgt_folder motion_output_gvhmr/throw_ball --robot unitree_g1_with_hands
+
+python scripts/gvhmr_to_robot.py --gvhmr_pred_file ./motion_data_gvhmr/throw_ball_pt/throw_ball_1.pt --robot unitree_g1_with_hands --record_video 
